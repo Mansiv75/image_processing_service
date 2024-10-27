@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from cloudinary_storage.storage import MediaCloudinaryStorage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +30,7 @@ SECRET_KEY = 'django-insecure-p*792##0nafsu(7ge+wky_cou!3_$11jfbnw*r24p&2nt07*7@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -137,3 +141,11 @@ REST_FRAMEWORK = {
 
 MEDIA_URL = '/media/'
 os.path.join(BASE_DIR, 'media/')
+
+CLOUDINARY_STORAGE={
+    "CLOUD_NAME":"dix08awez",
+    "API_KEY":"775469149534223",
+    "API_SECRET":"EVxshmRPOIT1F3s8EtB6GjkP97w",
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

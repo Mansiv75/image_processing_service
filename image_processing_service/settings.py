@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-p*792##0nafsu(7ge+wky_cou!3_$11jfbnw*r24p&2nt07*7@'
+SECRET_KEY = 'SECRET'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,10 +84,14 @@ WSGI_APPLICATION = 'image_processing_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',  # Use 'django.db.backends.postgresql' for PostgreSQL, or other backends
+        'NAME': BASE_DIR / "temp_db.sqlite3",
+        'OPTIONS': {
+            'timeout': 20,  # Increase timeout to handle heavy load
+        },
     }
 }
+
 
 
 # Password validation
@@ -149,3 +153,5 @@ CLOUDINARY_STORAGE={
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+

@@ -17,6 +17,8 @@ import cloudinary.uploader
 import cloudinary.api
 from cloudinary_storage.storage import MediaCloudinaryStorage
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,8 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'SECRET'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+# Force DEBUG to True
+DEBUG = True  # Force debug mode
+os.environ['DJANGO_DEBUG'] = 'True'
 ALLOWED_HOSTS = ['*']
 
 
